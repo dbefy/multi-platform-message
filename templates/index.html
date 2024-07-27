@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Messages</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Search Messages</h1>
+    <form method="post">
+        <input type="text" name="query" placeholder="Enter search query">
+        <button type="submit">Search</button>
+    </form>
+    {% if results %}
+        <h2>Results:</h2>
+        <ul>
+            {% for result in results %}
+                <li>
+                    <strong>Chat ID:</strong> {{ result[0] }}<br>
+                    <strong>From User ID:</strong> {{ result[1] }}<br>
+                    <strong>From User Username:</strong> {{ result[2] }}<br>
+                    <strong>Message Text:</strong> {{ result[3] }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
